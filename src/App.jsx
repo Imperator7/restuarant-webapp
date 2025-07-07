@@ -1,4 +1,5 @@
 import './App.css'
+import MenuItem from './components/menuItem'
 import { menuItems } from './data/mockData'
 
 function App() {
@@ -9,13 +10,7 @@ function App() {
       <h1>Menu</h1>
       <ul>
         {menu.map((item) => (
-          <div
-            key={item.id}
-            className="menu-item"
-            style={{ backgroundImage: `url(${item.picture})` }}
-          >
-            {item.name} - ${item.price.toFixed(2)}
-          </div>
+          <MenuItem key={item.id} item={item} />
         ))}
       </ul>
     </>
