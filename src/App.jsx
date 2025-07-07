@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <h1>Menu</h1>
+      <h1 style={{ margin: '0 8px ' }}>Menu</h1>
       <ul>
         {menu.map((item) => (
           <MenuItem key={item.id} item={item} />
