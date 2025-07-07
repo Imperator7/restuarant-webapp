@@ -1,3 +1,5 @@
+import '../styles/MenuItem.css'
+
 function MenuItem({ item }) {
   return (
     <div

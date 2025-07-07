@@ -3,12 +3,3 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-.menu-item {
-  width: 200px;
-  border: 1px solid black;
-  background-color: rgb(233, 253, 211);
-  padding: 12px;
-  margin: 8px;
-  border-radius: 4px;
-}
