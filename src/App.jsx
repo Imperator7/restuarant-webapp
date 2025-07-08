@@ -1,19 +1,18 @@
 import './App.css'
-import MenuItem from './components/menuItem'
-import { menuItems } from './data/mockData'
+import { useState } from 'react'
+import Cart from './layout/Cart'
+import Menu from './layout/Menu'
 
 function App() {
-  const menu = menuItems
+  const [cartOrders, setCartOrders] = useState([
+    { id: 1, name: 'Pizza', amount: 2 },
+  ])
 
   return (
-    <>
-      <h1 style={{ margin: '0 8px ' }}>Menu</h1>
-      <ul>
-        {menu.map((item) => (
-          <MenuItem key={item.id} item={item} />
-        ))}
-      </ul>
-    </>
+    <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+      <Menu setCartOrders={setCartOrders} />
+      <Cart cartOrders={cartOrders} />
+    </div>
   )
 }
 
