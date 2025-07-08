@@ -1,6 +1,6 @@
 import '../styles/Cart.css'
 
-function Cart({ cartOrders }) {
+function Cart({ cartOrders, handleAddToCart, handleRemoveFromCart }) {
   return (
     <div className="Cart">
       Cart
@@ -8,6 +8,8 @@ function Cart({ cartOrders }) {
       {cartOrders.map((order) => (
         <div key={order.id}>
           {order.name} - {order.amount}
+          <button onClick={() => handleAddToCart(order.id)}>+</button>
+          <button onClick={() => handleRemoveFromCart(order.id)}>-</button>
         </div>
       ))}
     </div>

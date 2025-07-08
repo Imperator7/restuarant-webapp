@@ -1,18 +1,6 @@
 import '../styles/MenuItem.css'
 
-function MenuItem({ item, setCartOrders }) {
-  const handleAddToCart = () => {
-    setCartOrders((prevOrders) => {
-      const existingOrder = prevOrders.find((order) => order.id === item.id)
-      if (existingOrder) {
-        return prevOrders.map((order) =>
-          order.id === item.id ? { ...order, amount: order.amount + 1 } : order
-        )
-      }
-      return [...prevOrders, { id: item.id, name: item.name, amount: 1 }]
-    })
-  }
-
+function MenuItem({ item, handleAddToCart }) {
   return (
     <div
       key={item.id}
@@ -29,7 +17,7 @@ function MenuItem({ item, setCartOrders }) {
           padding: '4px',
           transform: 'translateY(-10%)',
         }}
-        onClick={handleAddToCart}
+        onClick={() => handleAddToCart(item.id)}
       >
         Add to Cart
       </button>
