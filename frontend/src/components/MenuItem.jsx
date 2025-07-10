@@ -3,7 +3,7 @@ import '../styles/MenuItem.css'
 function MenuItem({ item, handleAddToCart }) {
   return (
     <div
-      key={item.id}
+      key={item._id}
       className="menu-item"
       style={{ backgroundImage: `url(${item.picture})`, position: 'relative' }}
     >
@@ -17,7 +17,7 @@ function MenuItem({ item, handleAddToCart }) {
           padding: '4px',
           transform: 'translateY(-10%)',
         }}
-        onClick={() => handleAddToCart(item.id)}
+        onClick={() => handleAddToCart(item._id)}
       >
         Add to Cart
       </button>

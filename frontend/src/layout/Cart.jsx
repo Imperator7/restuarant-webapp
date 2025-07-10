@@ -13,13 +13,13 @@ function Cart({ cartOrders, handleAddToCart, handleRemoveFromCart }) {
           <div>
             <button
               className="cart-button"
-              onClick={() => handleAddToCart(order.id)}
+              onClick={() => handleAddToCart(order)}
             >
               +
             </button>
             <button
               className="cart-button"
-              onClick={() => handleRemoveFromCart(order.id)}
+              onClick={() => handleRemoveFromCart(order)}
             >
               -
             </button>

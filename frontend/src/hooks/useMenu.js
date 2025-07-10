@@ -6,8 +6,9 @@ export function useMenu() {
 
   useEffect(() => {
     axios
-      .get('http://127.0.0.1:3000/api/menu')
+      .get('http://127.0.0.1:5000/api/menu')
       .then((response) => {
+        console.log('Menu items fetched:', response.data)
         setMenuItems(response.data)
       })
       .catch((error) => {

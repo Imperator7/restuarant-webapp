@@ -1,33 +1,39 @@
 import { useState } from 'react'
-import { menuItems } from '../data/mockData'
 
 function useCart() {
   const [cartOrders, setCartOrders] = useState([])
 
-  const handleAddToCart = (itemId) => {
+  const handleAddToCart = (newOrder) => {
+    console.log('Adding to cart:', newOrder)
     setCartOrders((prevOrders) => {
-      const existingOrder = prevOrders.find((order) => order.id === itemId)
+      const existingOrder = prevOrders.find(
+        (order) => order.id === newOrder._id
+      )
       if (existingOrder) {
         return prevOrders.map((order) =>
-          order.id === itemId ? { ...order, amount: order.amount + 1 } : order
+          order.id === newOrder._id
+            ? { ...order, amount: order.amount + 1 }
+            : order
         )
       }
       return [
         ...prevOrders,
         {
-          id: itemId,
-          name: menuItems.find((item) => item.id === itemId).name,
+          id: newOrder._id,
+          name: newOrder.name,
           amount: 1,
         },
       ]
     })
   }
 
-  const handleRemoveFromCart = (itemId) => {
+  const handleRemoveFromCart = (newOrder) => {
     setCartOrders((prevOrders) =>
       prevOrders
         .map((order) =>
-          order.id === itemId ? { ...order, amount: order.amount - 1 } : order
+          order.id === newOrder._id
+            ? { ...order, amount: order.amount - 1 }
+            : order
         )
         .filter((order) => order.amount > 0)
     )
