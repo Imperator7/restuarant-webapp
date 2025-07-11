@@ -10,12 +10,16 @@ router.get('/', async (req, res) => {
       return res.status(404).json({ message: 'No menu items found' })
     }
 
-    menuItems.forEach((item) => {
-      item._id = item._id.toString() // Convert ObjectId to string for easier handling
-      item.picture = item.picture || 'default.jpg' // Set a default picture if none exists
+    const formattedMenuItems = menuItems.map((item) => {
+      return {
+        id: item._id.toString(), // Convert ObjectId to string
+        name: item.name,
+        price: item.price,
+        picture: item.picture || null, // Handle optional picture field
+      }
     })
 
-    res.json(menuItems)
+    res.json(formattedMenuItems)
   } catch (err) {
     return res.status(500).json({ error: 'Failed to fetch menu items' })
   }
