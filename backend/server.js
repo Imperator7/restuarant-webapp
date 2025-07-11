@@ -6,15 +6,7 @@ const cors = require('cors')
 const app = express()
 const port = process.env.PORT || 3000
 
-const MenuItem = require('./models/menuItem') // Assuming you have a MenuItem model defined
-
-const menuItems = [
-  { id: 1, name: 'Pizza', price: 10.99, picture: 'pizza.jpg' },
-  { id: 2, name: 'Burger', price: 8.99, picture: 'burger.jpg' },
-  { id: 3, name: 'Pasta', price: 12.99, picture: 'pasta.jpg' },
-  { id: 4, name: 'Salad', price: 7.99, picture: 'salad.jpg' },
-  { id: 5, name: 'Soda', price: 1.99, picture: 'soda.jpg' },
-]
+const menuRouter = require('./routes/menu')
 
 app.use(cors())
 app.use(express.json())
@@ -27,14 +19,7 @@ db.once('open', () => {
   console.log('Connected to MongoDB')
 })
 
-app.get('/api/menu', async (req, res) => {
-  try {
-    const menus = await MenuItem.find({})
-    res.json(menus)
-  } catch (err) {
-    return res.status(500).json({ error: 'Failed to fetch menu items' })
-  }
-})
+app.use('/api/menu', menuRouter)
 
 app.get('/api/test', (req, res) => {
   res.json({ message: `Hello from the backend!` })
