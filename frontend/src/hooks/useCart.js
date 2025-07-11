@@ -6,12 +6,10 @@ function useCart() {
   const handleAddToCart = (newOrder) => {
     console.log('Adding to cart:', newOrder)
     setCartOrders((prevOrders) => {
-      const existingOrder = prevOrders.find(
-        (order) => order.id === newOrder._id
-      )
+      const existingOrder = prevOrders.find((order) => order.id === newOrder.id)
       if (existingOrder) {
         return prevOrders.map((order) =>
-          order.id === newOrder._id
+          order.id === newOrder.id
             ? { ...order, amount: order.amount + 1 }
             : order
         )
@@ -19,7 +17,7 @@ function useCart() {
       return [
         ...prevOrders,
         {
-          id: newOrder._id,
+          id: newOrder.id,
           name: newOrder.name,
           amount: 1,
         },
@@ -31,7 +29,7 @@ function useCart() {
     setCartOrders((prevOrders) =>
       prevOrders
         .map((order) =>
-          order.id === newOrder._id
+          order.id === newOrder.id
             ? { ...order, amount: order.amount - 1 }
             : order
         )

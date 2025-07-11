@@ -10,7 +10,7 @@ function Menu({ handleAddToCart }) {
       <ul>
         {menuItems.map((item) => (
           <MenuItem
-            key={item._id}
+            key={item.id}
             item={item}
             handleAddToCart={() => handleAddToCart(item)}
           />
